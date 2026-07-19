@@ -157,6 +157,24 @@ module.exports = async (req, res) => {
                 <p>Best regards,<br>The HavenPortal Team</p>
             </div>
         `;
+    } else if (eventType === 'rejected') {
+        subject = `Update on Booking Request: ${booking.propertyTitle}`;
+        htmlContent = `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                <h2 style="color: #ef4444; border-bottom: 2px solid #f87171; padding-bottom: 10px; margin-top: 0;">Booking Request Update</h2>
+                <p>Dear <strong>${booking.name}</strong>,</p>
+                <p>Thank you for your interest in renting <strong>${booking.propertyTitle}</strong>. We regret to inform you that your booking request has been declined at this time.</p>
+                
+                <div style="background-color: #fef2f2; padding: 15px; border-radius: 6px; margin: 20px 0; border: 1px solid #fee2e2;">
+                    <p style="margin: 0; color: #991b1b; font-weight: bold;">Status: Declined</p>
+                    <p style="margin: 5px 0 0; color: #7f1d1d; font-size: 0.85rem;">Property: ${booking.propertyTitle} (${booking.propertyAddress})</p>
+                </div>
+                
+                <p>This decision can be due to high demand, schedule conflicts, or rental criteria. We encourage you to browse our other available premium properties on HavenPortal to find a suitable space.</p>
+                <p>If you have any questions or require support, please contact us at support@havenportal.com.</p>
+                <p>Best regards,<br>The HavenPortal Team</p>
+            </div>
+        `;
     }
 
     try {

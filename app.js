@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // State management
-    let properties = window.PROPERTIES_DATA || [];
+    let customProperties = JSON.parse(localStorage.getItem('haven_custom_properties')) || [];
+    let properties = [...(window.PROPERTIES_DATA || []), ...customProperties];
     let bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
     let currentProperty = null;
     let currentSlideIndex = 0;
@@ -20,6 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewHome = document.getElementById('view-home');
     const viewBrowse = document.getElementById('view-browse');
     const viewBookings = document.getElementById('view-bookings');
+    const viewAdmin = document.getElementById('view-admin');
+
+    // Admin Elements
+    const adminLoginCard = document.getElementById('admin-login-card');
+    const adminLoginForm = document.getElementById('admin-login-form');
+    const adminPasscode = document.getElementById('admin-passcode');
+    const adminDashboardLayout = document.getElementById('admin-dashboard-layout');
+    const adminLogoutBtn = document.getElementById('admin-logout-btn');
+    const adminBookingsRows = document.getElementById('admin-bookings-rows');
+    const adminPropertyForm = document.getElementById('admin-property-form');
 
     // CTAs on Landing page
     const landingCtaPrimary = document.getElementById('landing-cta-primary');
@@ -94,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* -------------------------------------------------------------
-       2. Navigation and Transitions
+       2. Navigation and Transitions (SPA Routing)
        ------------------------------------------------------------- */
     navHome.addEventListener('click', () => showView('home'));
     navBrowse.addEventListener('click', () => showView('browse'));
@@ -129,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         viewHome.classList.add('hidden');
         viewBrowse.classList.add('hidden');
         viewBookings.classList.add('hidden');
+        viewAdmin.classList.add('hidden');
 
         if (view === 'home') {
             navHome.classList.add('active');
@@ -141,7 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
             navBookings.classList.add('active');
             viewBookings.classList.remove('hidden');
             renderBookings();
+        } else if (view === 'admin') {
+            viewAdmin.classList.remove('hidden');
         }
+    }
+
+    /* Check URL query on load for secret admin entry */
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('admin')) {
+        showView('admin');
     }
 
     /* -------------------------------------------------------------
@@ -398,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* -------------------------------------------------------------
-       7. Form Submission & Simulated Auto-Approval
+       7. Form Submission & Simulated Auto-Approval (MODIFIED)
        ------------------------------------------------------------- */
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -441,8 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Send booking submitted email notification
         sendEmailNotification('submitted', newBooking);
 
-        // Trigger simulation
-        simulateBookingApproval(newBooking.id);
+        // NOTE: Auto-approval is disabled so the Admin can manually test approval/rejection emails!
     });
 
     function showToast(message) {
@@ -462,28 +481,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000);
     }
 
-    function simulateBookingApproval(bookingId) {
-        setTimeout(() => {
-            bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
-            const bookingIdx = bookings.findIndex(b => b.id === bookingId);
-            if (bookingIdx !== -1 && bookings[bookingIdx].status === 'Pending') {
-                bookings[bookingIdx].status = 'Approved';
-                localStorage.setItem('haven_bookings', JSON.stringify(bookings));
-                
-                showToast(`Booking request for "${bookings[bookingIdx].propertyTitle}" has been APPROVED.`);
-                
-                // Send booking approved email notification
-                sendEmailNotification('approved', bookings[bookingIdx]);
-
-                if (!viewBookings.classList.contains('hidden')) {
-                    renderBookings();
-                }
-            }
-        }, 7000); // 7 seconds simulated validation delay
-    }
-
     /* -------------------------------------------------------------
-       8. Bookings Dashboard Panel
+       8. Bookings Dashboard Panel (Renter View)
        ------------------------------------------------------------- */
     function renderBookings() {
         bookingsList.innerHTML = '';
@@ -510,8 +509,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'booking-card glass-effect';
             
-            const badgeClass = book.status === 'Approved' ? 'status-approved' : 'status-pending';
-            const badgeIcon = book.status === 'Approved' ? 'fa-solid fa-circle-check' : 'fa-solid fa-circle-notch fa-spin';
+            let badgeClass = 'status-pending';
+            let badgeIcon = 'fa-solid fa-circle-notch fa-spin';
+            
+            if (book.status === 'Approved') {
+                badgeClass = 'status-approved';
+                badgeIcon = 'fa-solid fa-circle-check';
+            } else if (book.status === 'Rejected') {
+                badgeClass = 'btn-danger-custom'; // reuse styling red
+                badgeIcon = 'fa-solid fa-circle-xmark';
+                // Inline override for red badge
+                badgeClass = 'booking-status-badge'; 
+            }
 
             card.innerHTML = `
                 <div class="booking-main-info">
@@ -528,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="booking-actions">
                     <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem;">
-                        <span class="booking-status-badge ${badgeClass}">
+                        <span class="booking-status-badge ${badgeClass}" ${book.status === 'Rejected' ? 'style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"' : ''}>
                             <i class="${badgeIcon}"></i> ${book.status}
                         </span>
                         <button class="btn-danger-custom cancel-booking-btn" data-id="${book.id}">
@@ -566,6 +575,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /* -------------------------------------------------------------
+       9. API / Nodemailer Email Fetch Dispatcher
+       ------------------------------------------------------------- */
     async function sendEmailNotification(eventType, booking) {
         try {
             const response = await fetch('/api/send-email', {
@@ -581,4 +593,179 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error sending email notification:", err);
         }
     }
+
+    /* -------------------------------------------------------------
+       10. Hidden Admin Control Center Logic
+       ------------------------------------------------------------- */
+    adminLoginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const code = adminPasscode.value;
+        if (code === 'admin123') {
+            adminLoginCard.classList.add('hidden');
+            adminDashboardLayout.classList.remove('hidden');
+            showToast("Session unlocked. Welcome system administrator.");
+            renderAdminBookings();
+        } else {
+            alert("Invalid security passcode. Access denied.");
+            adminPasscode.value = '';
+        }
+    });
+
+    adminLogoutBtn.addEventListener('click', () => {
+        adminDashboardLayout.classList.add('hidden');
+        adminLoginCard.classList.remove('hidden');
+        adminPasscode.value = '';
+        showToast("Session locked successfully.");
+    });
+
+    function renderAdminBookings() {
+        adminBookingsRows.innerHTML = '';
+        bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
+
+        if (bookings.length === 0) {
+            adminBookingsRows.innerHTML = `
+                <tr>
+                    <td colspan="5" style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                        No rental requests submitted yet.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        bookings.forEach(book => {
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid var(--border-color)';
+            
+            let statusBadge = '';
+            let actionButtons = '';
+
+            if (book.status === 'Pending') {
+                statusBadge = `<span class="booking-status-badge status-pending"><i class="fa-solid fa-circle-notch fa-spin"></i> Pending</span>`;
+                actionButtons = `
+                    <button class="btn-primary-custom admin-approve-btn" data-id="${book.id}" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; background: #16a34a; box-shadow: none;">
+                        Approve
+                    </button>
+                    <button class="btn-danger-custom admin-reject-btn" data-id="${book.id}" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">
+                        Reject
+                    </button>
+                `;
+            } else if (book.status === 'Approved') {
+                statusBadge = `<span class="booking-status-badge status-approved"><i class="fa-solid fa-circle-check"></i> Approved</span>`;
+                actionButtons = `<span style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Handled</span>`;
+            } else if (book.status === 'Rejected') {
+                statusBadge = `<span class="booking-status-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-circle-xmark"></i> Declined</span>`;
+                actionButtons = `<span style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Handled</span>`;
+            }
+
+            row.innerHTML = `
+                <td style="padding: 1rem 0.5rem;">
+                    <strong>${book.name}</strong><br>
+                    <span style="font-size: 0.75rem; color: var(--text-secondary);">${book.email}</span>
+                </td>
+                <td style="padding: 1rem 0.5rem;">
+                    <strong>${book.propertyTitle}</strong><br>
+                    <span style="font-size: 0.75rem; color: var(--text-secondary);">${formatCurrency(book.propertyRent)}/mo</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8rem; font-weight: 550;">${book.moveInDate}</td>
+                <td style="padding: 1rem 0.5rem;">${statusBadge}</td>
+                <td style="padding: 1rem 0.5rem; text-align: right; display: flex; gap: 0.5rem; justify-content: flex-end; align-items: center; min-height: 57px;">
+                    ${actionButtons}
+                </td>
+            `;
+            adminBookingsRows.appendChild(row);
+        });
+
+        // Add action handlers
+        document.querySelectorAll('.admin-approve-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const bookingId = btn.getAttribute('data-id');
+                adminUpdateBookingStatus(bookingId, 'Approved');
+            });
+        });
+
+        document.querySelectorAll('.admin-reject-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const bookingId = btn.getAttribute('data-id');
+                adminUpdateBookingStatus(bookingId, 'Rejected');
+            });
+        });
+    }
+
+    function adminUpdateBookingStatus(bookingId, newStatus) {
+        bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
+        const bookingIdx = bookings.findIndex(b => b.id === bookingId);
+        
+        if (bookingIdx !== -1) {
+            bookings[bookingIdx].status = newStatus;
+            localStorage.setItem('haven_bookings', JSON.stringify(bookings));
+            
+            showToast(`Request for "${bookings[bookingIdx].propertyTitle}" marked as ${newStatus.toUpperCase()}.`);
+            
+            // Dispatch real email
+            const eventType = newStatus === 'Approved' ? 'approved' : 'rejected';
+            sendEmailNotification(eventType, bookings[bookingIdx]);
+
+            renderAdminBookings();
+        }
+    }
+
+    /* Admin Property Form Submission */
+    adminPropertyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const title = document.getElementById('prop-title').value;
+        const city = document.getElementById('prop-city').value;
+        const address = document.getElementById('prop-address').value;
+        const rent = parseInt(document.getElementById('prop-rent').value);
+        const area = parseInt(document.getElementById('prop-area').value);
+        const bedrooms = parseInt(document.getElementById('prop-beds').value);
+        const bathrooms = parseInt(document.getElementById('prop-baths').value);
+        const furnished = document.getElementById('prop-furnished').checked;
+        const parking = document.getElementById('prop-parking').checked;
+        const description = document.getElementById('prop-desc').value;
+        const imgExt = document.getElementById('prop-image-ext').value;
+        const imgInt = document.getElementById('prop-image-int').value;
+        const imgKtch = document.getElementById('prop-image-ktch').value;
+
+        const newProp = {
+            id: Date.now(),
+            title: title,
+            description: description,
+            rent: rent,
+            city: city,
+            address: address,
+            bedrooms: bedrooms,
+            bathrooms: bathrooms,
+            area: area,
+            furnished: furnished,
+            parking: parking,
+            available: true,
+            image: imgExt, // exterior main
+            images: [imgExt, imgInt, imgKtch], // gallery carousel list
+            rating: parseFloat((4.75 + Math.random() * 0.24).toFixed(2)),
+            reviewsCount: Math.floor(Math.random() * 15) + 2,
+            amenities: [
+                "Verified Spaces", 
+                "Air Conditioning", 
+                furnished ? "Fully Furnished" : "Semi-Furnished", 
+                parking ? "Dedicated Parking Garage" : "Street Parking", 
+                "Elevator Support", 
+                "24/7 Security"
+            ]
+        };
+
+        // Save to local storage custom properties
+        customProperties.push(newProp);
+        localStorage.setItem('haven_custom_properties', JSON.stringify(customProperties));
+        
+        // Merge to current state
+        properties = [...(window.PROPERTIES_DATA || []), ...customProperties];
+        
+        showToast(`Published listing: "${title}" successfully!`);
+        adminPropertyForm.reset();
+        
+        // Render
+        renderProperties();
+    });
 });
