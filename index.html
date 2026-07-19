@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HavenPortal | Premium Property Rentals</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar glass-effect">
+        <a class="nav-brand" href="#" id="nav-logo-btn">
+            <i class="fa-solid fa-house-chimney-user"></i>
+            <span>HavenPortal</span>
+        </a>
+        <div class="nav-links">
+            <span class="nav-link active" id="nav-home">Home</span>
+            <span class="nav-link" id="nav-browse">Browse Properties</span>
+            <span class="nav-link" id="nav-bookings">My Bookings</span>
+        </div>
+        <div class="nav-actions">
+            <!-- Theme Toggle -->
+            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+            <a class="btn-primary-custom" href="#" id="explore-btn">
+                <i class="fa-solid fa-compass"></i>
+                <span>Explore</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Views -->
+    <main>
+        
+        <!-- VIEW 1: HOME / LANDING PAGE -->
+        <section id="view-home" class="view-section">
+            <div class="landing-hero">
+                <div class="landing-hero-overlay"></div>
+                <div class="landing-hero-content">
+                    <span class="hero-badge">
+                        <i class="fa-solid fa-gem"></i> Verified Premium Rentals Only
+                    </span>
+                    <h1 class="landing-title">Elevate Your Living Experience</h1>
+                    <p class="landing-subtitle">Discover handcrafted rental villas, penthouses, and lofts tailored for high-end luxury and absolute peace of mind. Browse verified spaces with real-time availability check.</p>
+                    <div class="landing-ctas">
+                        <button class="btn-primary-custom" id="landing-cta-primary">
+                            <i class="fa-solid fa-magnifying-glass"></i> Explore Listings
+                        </button>
+                        <button class="btn-secondary-custom" id="landing-cta-secondary">
+                            <i class="fa-solid fa-circle-info"></i> Why HavenPortal
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features / Why Choose Us Section -->
+            <div class="features-section" id="benefits-section">
+                <div class="features-header">
+                    <h2>Verified Comfort, Redefined</h2>
+                    <p>We combine exquisite spaces with modern automated services to secure your dream dwelling.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card glass-effect">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>100% Verified Listings</h3>
+                        <p>Every single property cataloged is manually inspected and audited to match our luxury standards.</p>
+                    </div>
+                    <div class="feature-card glass-effect">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3>Simulated Instant Approval</h3>
+                        <p>Submit booking requests with immediate feedback simulation and reservation tracking.</p>
+                    </div>
+                    <div class="feature-card glass-effect">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-camera-retro"></i>
+                        </div>
+                        <h3>Premium Architectural Visuals</h3>
+                        <p>Explore interior, kitchen, and exterior views before deciding on your next booking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- VIEW 2: BROWSE PROPERTIES / CATALOG VIEW -->
+        <section id="view-browse" class="view-section hidden catalog-header-padding">
+            <!-- Search and Filter Panel -->
+            <div class="search-panel glass-effect">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label class="filter-label" for="search-input">Search Location</label>
+                        <input type="text" id="search-input" class="filter-input" placeholder="Search by name, address...">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label" for="city-filter">City</label>
+                        <select id="city-filter" class="filter-input">
+                            <option value="">All Cities</option>
+                            <option value="Kochi">Kochi</option>
+                            <option value="Trivandrum">Trivandrum</option>
+                            <option value="Munnar">Munnar</option>
+                            <option value="Kozhikode">Kozhikode</option>
+                            <option value="Wayanad">Wayanad</option>
+                            <option value="Alappuzha">Alappuzha</option>
+                            <option value="Kumarakom">Kumarakom</option>
+                            <option value="Thrissur">Thrissur</option>
+                            <option value="Kollam">Kollam</option>
+                            <option value="Vagamon">Vagamon</option>
+                            <option value="Palakkad">Palakkad</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label" for="bedrooms-filter">Bedrooms</label>
+                        <select id="bedrooms-filter" class="filter-input">
+                            <option value="">Any Bedrooms</option>
+                            <option value="1">1 Bedroom</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="4">4 Bedrooms</option>
+                            <option value="8">8 Bedrooms</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label" for="price-filter">Max Monthly Rent</label>
+                        <select id="price-filter" class="filter-input">
+                            <option value="">No Max Limit</option>
+                            <option value="30000">₹30,000 /mo</option>
+                            <option value="100000">₹1,00,000 /mo</option>
+                            <option value="500000">₹5,00,000 /mo</option>
+                            <option value="1200000">₹12,00,000 /mo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listings Grid -->
+            <div class="listings-section" id="listings-section-anchor">
+                <div class="section-header">
+                    <div class="section-title-div">
+                        <h2>Available Spaces</h2>
+                        <p>Explore our highly curated collection of properties</p>
+                    </div>
+                    <div class="listings-count" id="properties-count">4 properties found</div>
+                </div>
+
+                <div class="listings-grid" id="listings-grid">
+                    <!-- Cards populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: DASHBOARD / MY BOOKINGS VIEW -->
+        <section id="view-bookings" class="view-section hidden">
+            <div class="dashboard-container">
+                <div class="dashboard-title-div">
+                    <h2>My Bookings</h2>
+                    <p>Track status and manage details of your reservation requests.</p>
+                </div>
+
+                <div class="bookings-list" id="bookings-list">
+                    <!-- Booking requests loaded from Local Storage -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Property Details View Modal (Multi-Image Carousel + Details) -->
+    <div class="modal-backdrop" id="detail-modal">
+        <div class="modal-content glass-effect">
+            <div class="modal-header">
+                <h3 class="modal-title">Property Details</h3>
+                <button class="close-btn" id="close-detail-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="details-layout">
+                <!-- Left Column: Carousel + Description + Amenities -->
+                <div class="detail-main-col">
+                    <div class="gallery-carousel">
+                        <div id="carousel-slides-container">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" id="carousel-prev-btn" aria-label="Previous Image">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" id="carousel-next-btn" aria-label="Next Image">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <div class="carousel-dots" id="carousel-dots-container">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                        <div class="gallery-label" id="gallery-image-label">Exterior View</div>
+                    </div>
+                    
+                    <div class="detail-header">
+                        <h2 class="detail-title" id="detail-property-title">Kochi Heritage Luxury Villa</h2>
+                        <div class="detail-location" id="detail-property-address">
+                            <i class="fa-solid fa-location-dot"></i> Marine Drive Promenade, Kochi
+                        </div>
+                    </div>
+
+                    <div class="detail-desc-box">
+                        <h4>About this space</h4>
+                        <p id="detail-property-desc">Property detailed description goes here...</p>
+                    </div>
+
+                    <div class="amenities-container">
+                        <h4>Amenities Included</h4>
+                        <div class="amenities-grid" id="detail-property-amenities">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Specs & CTA panel -->
+                <div class="detail-side-col">
+                    <div class="booking-sticky-panel glass-effect">
+                        <div class="side-price-row">
+                            <div>
+                                <span class="price-label">Monthly Rent</span>
+                                <h3 id="detail-property-price">₹4,50,000</h3>
+                            </div>
+                            <span class="price-period">/ month</span>
+                        </div>
+                        
+                        <div class="side-specs-list">
+                            <div class="side-spec-row">
+                                <span>Bedrooms</span>
+                                <strong id="detail-spec-beds">4 Bedrooms</strong>
+                            </div>
+                            <div class="side-spec-row">
+                                <span>Bathrooms</span>
+                                <strong id="detail-spec-baths">4 Bathrooms</strong>
+                            </div>
+                            <div class="side-spec-row">
+                                <span>Total Area</span>
+                                <strong id="detail-spec-area">4,800 sq.ft</strong>
+                            </div>
+                            <div class="side-spec-row">
+                                <span>Furnishing</span>
+                                <strong id="detail-spec-furnishing">Fully Furnished</strong>
+                            </div>
+                            <div class="side-spec-row">
+                                <span>Parking Garage</span>
+                                <strong id="detail-spec-parking">Available</strong>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary-custom" id="reserve-space-btn" style="width: 100%; justify-content: center; height: 50px;">
+                            <i class="fa-solid fa-calendar-plus"></i> Reserve Space Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Request Form Modal -->
+    <div class="modal-backdrop" id="booking-modal">
+        <div class="modal-content modal-narrow glass-effect">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title-text">Request Booking</h3>
+                <button class="close-btn" id="close-modal-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="booking-summary-box">
+                <div class="summary-title" id="summary-property-title">Kochi Heritage Luxury Villa</div>
+                <div class="summary-details">
+                    <span id="summary-property-rent">Rent: ₹4,50,000/month</span>
+                    <span id="summary-property-address"><i class="fa-solid fa-location-dot"></i> Marine Drive Promenade, Kochi</span>
+                </div>
+            </div>
+
+            <form class="booking-form" id="booking-form" onsubmit="return false;">
+                <input type="hidden" id="modal-property-id">
+                
+                <div class="form-group">
+                    <label for="booking-name">Full Name</label>
+                    <input type="text" id="booking-name" class="form-input" placeholder="e.g. John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-email">Email Address</label>
+                    <input type="email" id="booking-email" class="form-input" placeholder="e.g. john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-phone">Phone Number</label>
+                    <input type="tel" id="booking-phone" class="form-input" placeholder="e.g. +91 98765 43210" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-date">Desired Move-in Date</label>
+                    <input type="date" id="booking-date" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-message">Custom Message (Optional)</label>
+                    <textarea id="booking-message" class="form-input" placeholder="Introduce yourself or ask questions about the property..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary-custom" id="submit-booking-btn" style="width: 100%; justify-content: center; height: 50px;">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Booking Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container">
+        <!-- Injected dynamically -->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fa-solid fa-house-chimney-user"></i> HavenPortal
+            </div>
+            <p>Providing verified, premium rental experiences with state-of-the-art architectures.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">&copy; 2026 HavenPortal. Handcrafted with modern design systems.</p>
+        </div>
+    </footer>
+
+    <!-- Load scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

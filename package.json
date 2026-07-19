@@ -1,0 +1,13 @@
+{
+  "name": "premium-rentals",
+  "version": "1.0.0",
+  "description": "Premium property rentals website with Vercel serverless email notifications.",
+  "main": "index.html",
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "echo 'Serve locally using a static server, e.g. vercel dev'"
+  }
+}
