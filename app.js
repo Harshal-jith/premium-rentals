@@ -638,25 +638,21 @@ document.addEventListener('DOMContentLoaded', () => {
             row.style.borderBottom = '1px solid var(--border-color)';
             
             let statusBadge = '';
-            let actionButtons = '';
-
             if (book.status === 'Pending') {
                 statusBadge = `<span class="booking-status-badge status-pending"><i class="fa-solid fa-circle-notch fa-spin"></i> Pending</span>`;
-                actionButtons = `
-                    <button class="btn-primary-custom admin-approve-btn" data-id="${book.id}" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; background: #16a34a; box-shadow: none;">
-                        Approve
-                    </button>
-                    <button class="btn-danger-custom admin-reject-btn" data-id="${book.id}" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">
-                        Reject
-                    </button>
-                `;
             } else if (book.status === 'Approved') {
                 statusBadge = `<span class="booking-status-badge status-approved"><i class="fa-solid fa-circle-check"></i> Approved</span>`;
-                actionButtons = `<span style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Handled</span>`;
             } else if (book.status === 'Rejected') {
                 statusBadge = `<span class="booking-status-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-circle-xmark"></i> Declined</span>`;
-                actionButtons = `<span style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Handled</span>`;
             }
+
+            const actionSelectHtml = `
+                <select class="admin-status-select" data-id="${book.id}" style="padding: 0.35rem 0.5rem; font-size: 0.8rem; font-weight: 600; width: 140px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-primary); cursor: pointer; outline: none;">
+                    <option value="Pending" ${book.status === 'Pending' ? 'selected' : ''}>⏳ Mark Pending</option>
+                    <option value="Approved" ${book.status === 'Approved' ? 'selected' : ''}>✅ Mark Approved</option>
+                    <option value="Rejected" ${book.status === 'Rejected' ? 'selected' : ''}>❌ Mark Decline</option>
+                </select>
+            `;
 
             row.innerHTML = `
                 <td style="padding: 1rem 0.5rem;">
@@ -669,25 +665,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
                 <td style="padding: 1rem 0.5rem; font-size: 0.8rem; font-weight: 550;">${book.moveInDate}</td>
                 <td style="padding: 1rem 0.5rem;">${statusBadge}</td>
-                <td style="padding: 1rem 0.5rem; text-align: right; display: flex; gap: 0.5rem; justify-content: flex-end; align-items: center; min-height: 57px;">
-                    ${actionButtons}
+                <td style="padding: 1rem 0.5rem; text-align: right; display: flex; justify-content: flex-end; align-items: center; min-height: 57px;">
+                    ${actionSelectHtml}
                 </td>
             `;
             adminBookingsRows.appendChild(row);
         });
 
-        // Add action handlers
-        document.querySelectorAll('.admin-approve-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const bookingId = btn.getAttribute('data-id');
-                adminUpdateBookingStatus(bookingId, 'Approved');
-            });
-        });
-
-        document.querySelectorAll('.admin-reject-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const bookingId = btn.getAttribute('data-id');
-                adminUpdateBookingStatus(bookingId, 'Rejected');
+        // Add action change handlers
+        document.querySelectorAll('.admin-status-select').forEach(select => {
+            select.addEventListener('change', (e) => {
+                const bookingId = select.getAttribute('data-id');
+                const newStatus = e.target.value;
+                adminUpdateBookingStatus(bookingId, newStatus);
             });
         });
     }
@@ -697,14 +687,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const bookingIdx = bookings.findIndex(b => b.id === bookingId);
         
         if (bookingIdx !== -1) {
+            const oldStatus = bookings[bookingIdx].status;
+            if (oldStatus === newStatus) return; // no change
+
             bookings[bookingIdx].status = newStatus;
             localStorage.setItem('haven_bookings', JSON.stringify(bookings));
             
-            showToast(`Request for "${bookings[bookingIdx].propertyTitle}" marked as ${newStatus.toUpperCase()}.`);
+            showToast(`Request for "${bookings[bookingIdx].propertyTitle}" changed to ${newStatus.toUpperCase()}.`);
             
-            // Dispatch real email
-            const eventType = newStatus === 'Approved' ? 'approved' : 'rejected';
-            sendEmailNotification(eventType, bookings[bookingIdx]);
+            // Dispatch real email on approved/rejected transitions
+            if (newStatus === 'Approved') {
+                sendEmailNotification('approved', bookings[bookingIdx]);
+            } else if (newStatus === 'Rejected') {
+                sendEmailNotification('rejected', bookings[bookingIdx]);
+            }
 
             renderAdminBookings();
         }
