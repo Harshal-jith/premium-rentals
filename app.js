@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // State management
-    let customProperties = JSON.parse(localStorage.getItem('haven_custom_properties')) || [];
+    let customProperties = JSON.parse(localStorage.getItem('rentora_custom_properties')) || [];
     let properties = [...(window.PROPERTIES_DATA || []), ...customProperties];
-    let bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
+    let bookings = JSON.parse(localStorage.getItem('rentora_bookings')) || [];
     let currentProperty = null;
     let currentSlideIndex = 0;
 
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------------------------------------------
        1. Theme Toggle Management
        ------------------------------------------------------------- */
-    const savedTheme = localStorage.getItem('haven_theme') || 'light';
+    const savedTheme = localStorage.getItem('rentora_theme') || 'light';
     setTheme(savedTheme);
 
     themeToggleBtn.addEventListener('click', () => {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setTheme(theme) {
         htmlEl.setAttribute('data-theme', theme);
-        localStorage.setItem('haven_theme', theme);
+        localStorage.setItem('rentora_theme', theme);
         if (theme === 'dark') {
             themeIcon.className = 'fa-solid fa-sun';
             themeToggleBtn.setAttribute('title', 'Switch to Light Mode');
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         bookings.unshift(newBooking);
-        localStorage.setItem('haven_bookings', JSON.stringify(bookings));
+        localStorage.setItem('rentora_bookings', JSON.stringify(bookings));
 
         closeBookingModal();
         showToast(`Booking request submitted for "${prop.title}"!`);
@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const bookingToCancel = bookings.find(b => b.id === bookingId);
             
             bookings = bookings.filter(b => b.id !== bookingId);
-            localStorage.setItem('haven_bookings', JSON.stringify(bookings));
+            localStorage.setItem('rentora_bookings', JSON.stringify(bookings));
             showToast("Booking request cancelled successfully.");
             
             // Send cancellation email notification
@@ -620,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderAdminBookings() {
         adminBookingsRows.innerHTML = '';
-        bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
+        bookings = JSON.parse(localStorage.getItem('rentora_bookings')) || [];
 
         if (bookings.length === 0) {
             adminBookingsRows.innerHTML = `
@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function adminUpdateBookingStatus(bookingId, newStatus) {
-        bookings = JSON.parse(localStorage.getItem('haven_bookings')) || [];
+        bookings = JSON.parse(localStorage.getItem('rentora_bookings')) || [];
         const bookingIdx = bookings.findIndex(b => b.id === bookingId);
         
         if (bookingIdx !== -1) {
@@ -691,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (oldStatus === newStatus) return; // no change
 
             bookings[bookingIdx].status = newStatus;
-            localStorage.setItem('haven_bookings', JSON.stringify(bookings));
+            localStorage.setItem('rentora_bookings', JSON.stringify(bookings));
             
             showToast(`Request for "${bookings[bookingIdx].propertyTitle}" changed to ${newStatus.toUpperCase()}.`);
             
@@ -753,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Save to local storage custom properties
         customProperties.push(newProp);
-        localStorage.setItem('haven_custom_properties', JSON.stringify(customProperties));
+        localStorage.setItem('rentora_custom_properties', JSON.stringify(customProperties));
         
         // Merge to current state
         properties = [...(window.PROPERTIES_DATA || []), ...customProperties];

@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
     const smtpPort = parseInt(process.env.SMTP_PORT || '587');
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
-    const emailFrom = process.env.EMAIL_FROM || smtpUser || 'noreply@havenportal.com';
+    const emailFrom = process.env.EMAIL_FROM || smtpUser || 'noreply@rentora.com';
 
     // Fallback for local development when env vars aren't configured yet
     if (!smtpUser || !smtpPass) {
@@ -63,7 +63,7 @@ module.exports = async (req, res) => {
         subject = `Booking Request Received: ${booking.propertyTitle}`;
         htmlContent = `
             <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
-                <h2 style="color: #d97706; border-bottom: 2px solid #f59e0b; padding-bottom: 10px; margin-top: 0;">HavenPortal Booking Request</h2>
+                <h2 style="color: #d97706; border-bottom: 2px solid #f59e0b; padding-bottom: 10px; margin-top: 0;">Rentora Booking Request</h2>
                 <p>Dear <strong>${booking.name}</strong>,</p>
                 <p>Thank you for submitting your reservation request. We have received your booking details and have forwarded them to verification services.</p>
                 
@@ -90,7 +90,7 @@ module.exports = async (req, res) => {
                 </div>
                 
                 <p><strong>Next Steps:</strong> Our team is validating details for immediate confirmation. You will receive an automated email response detailing status updates within a few minutes.</p>
-                <p>Best regards,<br>The HavenPortal Team</p>
+                <p>Best regards,<br>The Rentora Team</p>
             </div>
         `;
     } else if (eventType === 'approved') {
@@ -99,7 +99,7 @@ module.exports = async (req, res) => {
             <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
                 <h2 style="color: #16a34a; border-bottom: 2px solid #22c55e; padding-bottom: 10px; margin-top: 0;">Booking Approved 🎉</h2>
                 <p>Dear <strong>${booking.name}</strong>,</p>
-                <p>Congratulations! Your booking request for <strong>${booking.propertyTitle}</strong> has been officially approved and verified by HavenPortal.</p>
+                <p>Congratulations! Your booking request for <strong>${booking.propertyTitle}</strong> has been officially approved and verified by Rentora.</p>
                 
                 <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; padding: 15px; border-radius: 6px; margin: 20px 0;">
                     <h3 style="margin-top: 0; color: #14532d;">Reservation Details</h3>
@@ -129,7 +129,7 @@ module.exports = async (req, res) => {
                 
                 <p><strong>What's next?</strong> A letting representative will reach out to your registered phone number (<strong>${booking.phone}</strong>) shortly to coordinate the rental contract signing and security deposit transfer.</p>
                 <p>We are excited to welcome you to your premium new home!</p>
-                <p>Best regards,<br>The HavenPortal Team</p>
+                <p>Best regards,<br>The Rentora Team</p>
             </div>
         `;
     } else if (eventType === 'cancelled') {
@@ -153,8 +153,8 @@ module.exports = async (req, res) => {
                     </table>
                 </div>
                 
-                <p>If you did not initiate this request or have changed your mind, feel free to visit HavenPortal and submit a new reservation request at any time.</p>
-                <p>Best regards,<br>The HavenPortal Team</p>
+                <p>If you did not initiate this request or have changed your mind, feel free to visit Rentora and submit a new reservation request at any time.</p>
+                <p>Best regards,<br>The Rentora Team</p>
             </div>
         `;
     } else if (eventType === 'rejected') {
@@ -170,16 +170,16 @@ module.exports = async (req, res) => {
                     <p style="margin: 5px 0 0; color: #7f1d1d; font-size: 0.85rem;">Property: ${booking.propertyTitle} (${booking.propertyAddress})</p>
                 </div>
                 
-                <p>This decision can be due to high demand, schedule conflicts, or rental criteria. We encourage you to browse our other available premium properties on HavenPortal to find a suitable space.</p>
-                <p>If you have any questions or require support, please contact us at support@havenportal.com.</p>
-                <p>Best regards,<br>The HavenPortal Team</p>
+                <p>This decision can be due to high demand, schedule conflicts, or rental criteria. We encourage you to browse our other available premium properties on Rentora to find a suitable space.</p>
+                <p>If you have any questions or require support, please contact us at support@rentora.com.</p>
+                <p>Best regards,<br>The Rentora Team</p>
             </div>
         `;
     }
 
     try {
         await transporter.sendMail({
-            from: `HavenPortal <${emailFrom}>`,
+            from: `Rentora <${emailFrom}>`,
             to: booking.email,
             subject: subject,
             html: htmlContent
