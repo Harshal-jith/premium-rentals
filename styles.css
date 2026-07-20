@@ -41,8 +41,52 @@
     --toast-text: #0f172a;
 }
 
-[data-theme="dark"] .nav-brand img {
-    filter: brightness(0) invert(1);
+/* Logo Container & Transitions */
+.logo-container {
+    position: relative;
+    height: 48px; /* 25-35% larger than original text/icon */
+    width: 180px;
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transition: opacity 250ms ease-in-out;
+}
+
+/* Light Mode values (Default) */
+.logo-light {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.logo-dark {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Dark Mode values */
+[data-theme="dark"] .logo-light {
+    opacity: 0;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .logo-dark {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        height: 42px;
+        width: 155px;
+    }
 }
 
 * {
