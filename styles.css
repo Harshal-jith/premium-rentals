@@ -41,6 +41,10 @@
     --toast-text: #0f172a;
 }
 
+[data-theme="dark"] .nav-brand img {
+    filter: brightness(0) invert(1);
+}
+
 * {
     margin: 0;
     padding: 0;
