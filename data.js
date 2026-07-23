@@ -119,11 +119,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
+        image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // Dutch colonial villa veranda
         images: [
-            "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
-            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
+            "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // exterior veranda
+            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800", // heritage wooden living room
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // colonial dining & kitchen
         ],
         rating: 4.93,
         reviewsCount: 24,
@@ -145,11 +145,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // tropical jungle glass resort
         images: [
-            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800",
-            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800"
+            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // forest exterior
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", // glass jungle living room
+            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800"  // timber forest kitchen
         ],
         rating: 4.89,
         reviewsCount: 31,
@@ -171,11 +171,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // backwater waterfront villa
         images: [
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // backwater deck exterior
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // waterfront living room
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // lakeside kitchen counter
         ],
         rating: 4.96,
         reviewsCount: 45,
@@ -197,11 +197,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800", // palm tropical resort pool villa
         images: [
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
-            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800", // exterior pool & lake view
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", // rafter ceiling living room
+            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"  // resort kitchen island
         ],
         rating: 4.97,
         reviewsCount: 22,
@@ -226,8 +226,8 @@ const PROPERTIES_DATA = [
         image: "images/thrissur_illam_exterior.jpg",
         images: [
             "images/thrissur_illam_exterior.jpg",
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
+            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800", // courtyard interior rafter
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // traditional wood kitchen
         ],
         rating: 4.90,
         reviewsCount: 18,
@@ -249,11 +249,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", // cliffside glass house
         images: [
-            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800",
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"
+            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", // cliff exterior deck
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", // sunset glass living room
+            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"  // coastal view kitchen
         ],
         rating: 4.84,
         reviewsCount: 14,
@@ -275,11 +275,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800",
+        image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800", // pine wooden chalet in hill
         images: [
-            "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800",
-            "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800",
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"
+            "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800", // chalet exterior
+            "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800", // pine wood fireplace room
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // timber mountain kitchen
         ],
         rating: 4.87,
         reviewsCount: 26,
@@ -301,11 +301,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // traditional slate tharavadu
         images: [
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
+            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // tharavadu exterior
+            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800", // open pillar veranda
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // clay pot traditional kitchen
         ],
         rating: 4.82,
         reviewsCount: 15,
@@ -327,11 +327,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
+        image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // modern glass mansion pool
         images: [
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
-            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // glass exterior
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", // double height living room
+            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"  // marble island kitchen
         ],
         rating: 4.98,
         reviewsCount: 11,
@@ -353,11 +353,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // misty mountain lodge
         images: [
-            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800",
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"
+            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // mountain mist exterior
+            "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800", // hearth fireplace room
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // high altitude kitchen
         ],
         rating: 4.91,
         reviewsCount: 20,
@@ -379,11 +379,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
+        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // luxury penthouse tower
         images: [
-            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"
+            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // tower exterior
+            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800", // marble luxury living room
+            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"  // gourmet kitchen
         ],
         rating: 4.93,
         reviewsCount: 17,
@@ -405,11 +405,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800",
+        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // coffee plantation estate manor
         images: [
-            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800",
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800",
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
+            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // estate manor exterior
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", // plantation lounge
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // coffee bar & timber kitchen
         ],
         rating: 4.88,
         reviewsCount: 23,
@@ -431,11 +431,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // lagoon waterside cottage
         images: [
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // lagoon exterior deck
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // rattan lagoon lounge
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // backwater kitchen
         ],
         rating: 4.85,
         reviewsCount: 28,
@@ -457,11 +457,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
+        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // beachfront white villa
         images: [
-            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"
+            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // beach villa exterior
+            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800", // ocean view living room
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // coastal white kitchen
         ],
         rating: 4.88,
         reviewsCount: 16,
@@ -483,11 +483,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800", // tech park glass block
         images: [
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
-            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"
+            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800", // suite building exterior
+            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800", // executive smart desk room
+            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"  // tech studio kitchen
         ],
         rating: 4.79,
         reviewsCount: 22,
@@ -509,11 +509,11 @@ const PROPERTIES_DATA = [
         furnished: true,
         parking: true,
         available: true,
-        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800",
+        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // kalpathy heritage tharavadu
         images: [
-            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800",
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800",
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
+            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // tharavadu clay roof exterior
+            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800", // nadumuttom courtyard interior
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // traditional brass & clay pot kitchen
         ],
         rating: 4.98,
         reviewsCount: 19,
