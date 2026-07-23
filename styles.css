@@ -1325,3 +1325,309 @@ footer {
         opacity: 0;
     }
 }
+
+/* =============================================================
+   AMBIENT ORBS & HERO STATS BAR
+   ============================================================= */
+.ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+    animation: orbFloat 10s ease-in-out infinite alternate;
+}
+
+.ambient-orb-1 {
+    width: 350px;
+    height: 350px;
+    top: 10%;
+    left: 5%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.6) 0%, rgba(217, 119, 6, 0) 70%);
+}
+
+.ambient-orb-2 {
+    width: 420px;
+    height: 420px;
+    bottom: 15%;
+    right: 5%;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.5) 0%, rgba(180, 83, 9, 0) 70%);
+    animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -20px) scale(1.08);
+    }
+    100% {
+        transform: translate(-20px, 30px) scale(0.95);
+    }
+}
+
+.hero-stats-bar {
+    margin-top: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.25rem 2rem;
+    border-radius: 20px;
+    gap: 1rem;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 35px;
+    background: var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .hero-stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        gap: 1.25rem;
+        padding: 1.5rem;
+    }
+    .stat-divider {
+        display: none;
+    }
+}
+
+/* =============================================================
+   CATEGORY CHIPS & CONTROLS
+   ============================================================= */
+.category-chips-wrapper {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chips-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.chips-scroll {
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+}
+.chips-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.chip-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.45rem 0.95rem;
+    border-radius: 50px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    outline: none;
+}
+
+.chip-item:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.chip-item.active {
+    background: var(--gradient-accent);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.35);
+}
+
+.section-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.view-toggle-group {
+    display: flex;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3px;
+}
+
+.view-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.4rem 0.85rem;
+    border-radius: 9px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+}
+
+.view-toggle-btn.active {
+    background: var(--bg-secondary);
+    color: var(--accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sort-select {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.45rem 0.85rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+}
+
+/* =============================================================
+   MAP VIEW STYLING (LEAFLET)
+   ============================================================= */
+.map-view-wrapper {
+    width: 100%;
+    height: 600px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    margin-top: 1rem;
+}
+
+#rentora-map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Custom Leaflet Popup Card */
+.leaflet-popup-content-wrapper {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid var(--border-color);
+}
+
+.leaflet-popup-content {
+    margin: 0 !important;
+    line-height: 1.4 !important;
+    width: 240px !important;
+}
+
+.map-popup-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.map-popup-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.map-popup-body {
+    padding: 0.85rem;
+}
+
+.map-popup-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.map-popup-rent {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.map-popup-btn {
+    width: 100%;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    justify-content: center;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: #fff !important;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    line-height: 20px;
+    top: 8px !important;
+    right: 8px !important;
+}
+
+/* Dark mode adjustments for Leaflet tiles */
+[data-theme="dark"] .leaflet-tile-container img {
+    filter: brightness(0.75) contrast(1.15) invert(0.9) hue-rotate(180deg);
+}
+
+/* Property card glowing border on hover */
+.property-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.property-card:hover {
+    border-color: rgba(var(--accent-rgb), 0.4);
+    box-shadow: 0 12px 35px rgba(var(--accent-rgb), 0.15);
+}
+

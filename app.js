@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let bookings = JSON.parse(localStorage.getItem('rentora_bookings')) || [];
     let currentProperty = null;
     let currentSlideIndex = 0;
+    let selectedCategory = '';
+    let currentSort = 'featured';
+    let currentViewMode = 'grid';
+    let mapInstance = null;
+    let mapMarkers = [];
 
     // Navigation elements
     const htmlEl = document.documentElement;
@@ -36,13 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const landingCtaPrimary = document.getElementById('landing-cta-primary');
     const landingCtaSecondary = document.getElementById('landing-cta-secondary');
 
-    // Catalog filters
+    // Catalog filters & view controls
     const searchInput = document.getElementById('search-input');
     const cityFilter = document.getElementById('city-filter');
     const bedroomsFilter = document.getElementById('bedrooms-filter');
     const priceFilter = document.getElementById('price-filter');
+    const categoryChips = document.getElementById('category-chips');
+    const sortFilter = document.getElementById('sort-filter');
+    const viewToggleGrid = document.getElementById('view-toggle-grid');
+    const viewToggleMap = document.getElementById('view-toggle-map');
     const propertiesCount = document.getElementById('properties-count');
     const listingsGrid = document.getElementById('listings-grid');
+    const mapViewContainer = document.getElementById('map-view-container');
 
     // Detailed View Modal Elements
     const detailModal = document.getElementById('detail-modal');
@@ -145,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (view === 'home') {
             navHome.classList.add('active');
             viewHome.classList.remove('hidden');
+            animateHeroStats();
         } else if (view === 'browse') {
             navBrowse.classList.add('active');
             viewBrowse.classList.remove('hidden');
@@ -162,10 +173,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('admin')) {
         showView('admin');
+    } else {
+        // Trigger initial hero counter animation
+        animateHeroStats();
     }
 
     /* -------------------------------------------------------------
-       3. Utility / Formatters
+       3. Hero Animated Metrics Counter
+       ------------------------------------------------------------- */
+    function animateHeroStats() {
+        const numbers = document.querySelectorAll('.stat-number');
+        numbers.forEach(numEl => {
+            const target = parseFloat(numEl.getAttribute('data-target'));
+            const prefix = numEl.getAttribute('data-prefix') || '';
+            const suffix = numEl.getAttribute('data-suffix') || '';
+            const isFloat = target % 1 !== 0;
+
+            let current = 0;
+            const duration = 1200; // ms
+            const steps = 40;
+            const increment = target / steps;
+            const stepTime = duration / steps;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                const formattedVal = isFloat ? current.toFixed(2) : Math.floor(current);
+                numEl.textContent = `${prefix}${formattedVal}${suffix}`;
+            }, stepTime);
+        });
+    }
+
+    /* -------------------------------------------------------------
+       4. Utility / Formatters
        ------------------------------------------------------------- */
     function formatCurrency(amount) {
         return new Intl.NumberFormat('en-IN', {
@@ -176,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* -------------------------------------------------------------
-       4. Property Listing Card Renderer
+       5. Property Listing Card & Map Renderer
        ------------------------------------------------------------- */
     function renderProperties() {
         const query = searchInput.value.toLowerCase().trim();
@@ -185,28 +228,50 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxPrice = priceFilter.value ? parseInt(priceFilter.value) : null;
 
         // Filter Logic
-        const filtered = properties.filter(prop => {
+        let filtered = properties.filter(prop => {
             const matchesSearch = prop.title.toLowerCase().includes(query) ||
                                   prop.description.toLowerCase().includes(query) ||
                                   prop.address.toLowerCase().includes(query);
             const matchesCity = !city || prop.city === city;
             const matchesBedrooms = !bedrooms || prop.bedrooms === parseInt(bedrooms);
             const matchesPrice = !maxPrice || prop.rent <= maxPrice;
+            const matchesCategory = !selectedCategory || prop.category === selectedCategory;
 
-            return matchesSearch && matchesCity && matchesBedrooms && matchesPrice;
+            return matchesSearch && matchesCity && matchesBedrooms && matchesPrice && matchesCategory;
         });
+
+        // Sort Logic
+        if (currentSort === 'price-low') {
+            filtered.sort((a, b) => a.rent - b.rent);
+        } else if (currentSort === 'price-high') {
+            filtered.sort((a, b) => b.rent - a.rent);
+        } else if (currentSort === 'rating') {
+            filtered.sort((a, b) => b.rating - a.rating);
+        }
 
         // Update counts
         propertiesCount.textContent = `${filtered.length} property${filtered.length === 1 ? '' : 'ies'} found`;
 
+        if (currentViewMode === 'grid') {
+            listingsGrid.classList.remove('hidden');
+            mapViewContainer.classList.add('hidden');
+            renderGridCards(filtered);
+        } else {
+            listingsGrid.classList.add('hidden');
+            mapViewContainer.classList.remove('hidden');
+            initAndRenderMap(filtered);
+        }
+    }
+
+    function renderGridCards(filtered) {
         listingsGrid.innerHTML = '';
 
         if (filtered.length === 0) {
             listingsGrid.innerHTML = `
-                <div class="empty-state">
+                <div class="empty-state" style="grid-column: 1 / -1;">
                     <i class="fa-solid fa-magnifying-glass-location"></i>
                     <h3>No Listings Found</h3>
-                    <p>Try adjusting your search filters or matching keywords.</p>
+                    <p>Try adjusting your search filters or quick category chips.</p>
                 </div>
             `;
             return;
@@ -218,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="card-img-wrapper">
                     <img src="${prop.image}" alt="${prop.title}" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800'">
-                    <span class="card-tag">${prop.furnished ? 'Fully Furnished' : 'Semi-Furnished'}</span>
+                    <span class="card-tag">${prop.category || (prop.furnished ? 'Fully Furnished' : 'Semi-Furnished')}</span>
                     <span class="card-rating">
                         <i class="fa-solid fa-star"></i>
                         <span>${prop.rating.toFixed(2)}</span>
@@ -259,7 +324,123 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Attach filters
+    /* -------------------------------------------------------------
+       6. Leaflet Interactive Map View Manager
+       ------------------------------------------------------------- */
+    function initAndRenderMap(filteredProps) {
+        if (typeof L === 'undefined') return;
+
+        if (!mapInstance) {
+            // Default centered at Kerala center
+            mapInstance = L.map('rentora-map').setView([10.1, 76.5], 7);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 18
+            }).addTo(mapInstance);
+        }
+
+        // Invalidate size to ensure container fills correctly
+        setTimeout(() => {
+            mapInstance.invalidateSize();
+        }, 100);
+
+        // Clear existing markers
+        mapMarkers.forEach(marker => mapInstance.removeLayer(marker));
+        mapMarkers = [];
+
+        if (filteredProps.length === 0) return;
+
+        const bounds = [];
+
+        filteredProps.forEach(prop => {
+            const lat = prop.lat || (9.9312 + (Math.random() - 0.5) * 0.4);
+            const lng = prop.lng || (76.2673 + (Math.random() - 0.5) * 0.4);
+
+            bounds.push([lat, lng]);
+
+            // Custom Amber Pin Marker HTML
+            const customIcon = L.divIcon({
+                className: 'custom-map-pin-icon',
+                html: `
+                    <div style="background: var(--gradient-accent); color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 2px solid #fff; font-size: 0.85rem;">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                `,
+                iconSize: [34, 34],
+                iconAnchor: [17, 17]
+            });
+
+            const marker = L.marker([lat, lng], { icon: customIcon }).addTo(mapInstance);
+
+            const popupContent = `
+                <div class="map-popup-card">
+                    <img src="${prop.image}" alt="${prop.title}" class="map-popup-img" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800'">
+                    <div class="map-popup-body">
+                        <div class="map-popup-title">${prop.title}</div>
+                        <div class="map-popup-rent">${formatCurrency(prop.rent)}/mo</div>
+                        <button class="btn-primary-custom map-popup-btn map-popup-details-btn" data-id="${prop.id}">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            marker.bindPopup(popupContent);
+            mapMarkers.push(marker);
+        });
+
+        if (bounds.length > 0) {
+            mapInstance.fitBounds(bounds, { padding: [40, 40] });
+        }
+
+        // Delegate listener for map popup button click
+        document.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('map-popup-details-btn')) {
+                const propId = parseInt(e.target.getAttribute('data-id'));
+                openDetailModal(propId);
+            }
+        });
+    }
+
+    /* Category Chips Event Listener */
+    if (categoryChips) {
+        categoryChips.querySelectorAll('.chip-item').forEach(chip => {
+            chip.addEventListener('click', () => {
+                categoryChips.querySelectorAll('.chip-item').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                selectedCategory = chip.getAttribute('data-category');
+                renderProperties();
+            });
+        });
+    }
+
+    /* Sort Select Event Listener */
+    if (sortFilter) {
+        sortFilter.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderProperties();
+        });
+    }
+
+    /* View Toggle Event Listeners */
+    if (viewToggleGrid && viewToggleMap) {
+        viewToggleGrid.addEventListener('click', () => {
+            viewToggleGrid.classList.add('active');
+            viewToggleMap.classList.remove('active');
+            currentViewMode = 'grid';
+            renderProperties();
+        });
+
+        viewToggleMap.addEventListener('click', () => {
+            viewToggleMap.classList.add('active');
+            viewToggleGrid.classList.remove('active');
+            currentViewMode = 'map';
+            renderProperties();
+        });
+    }
+
+    // Attach search filters
     searchInput.addEventListener('input', renderProperties);
     cityFilter.addEventListener('change', renderProperties);
     bedroomsFilter.addEventListener('change', renderProperties);
