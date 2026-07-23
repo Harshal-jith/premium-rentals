@@ -1,523 +1,665 @@
 const PROPERTIES_DATA = [
     {
-        id: 1,
-        title: "Kochi Heritage Luxury Villa",
-        description: "A stunning modern villa located near the scenic Marine Drive in Kochi. Features traditional Kerala architectural design touches combined with modern high ceilings, a grand foyer, custom infinity pool, and beautiful sea views.",
-        rent: 450000,
-        city: "Kochi",
-        address: "Marine Drive Promenade, Kochi, Kerala",
-        lat: 9.9726,
-        lng: 76.2750,
-        category: "Luxury Villa",
-        bedrooms: 4,
-        bathrooms: 4,
-        area: 4800,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "images/luxury_villa.jpg",
-        images: [
+        "id": 1,
+        "title": "Kochi Heritage Luxury Villa",
+        "description": "A stunning modern villa located near the scenic Marine Drive in Kochi. Features traditional Kerala architectural design touches combined with modern high ceilings, a grand foyer, custom infinity pool, and beautiful sea views.",
+        "rent": 450000,
+        "city": "Kochi",
+        "address": "Marine Drive Promenade, Kochi, Kerala",
+        "lat": 9.9726,
+        "lng": 76.275,
+        "category": "Luxury Villa",
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "area": 4800,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "images/luxury_villa.jpg",
+        "images": [
             "images/luxury_villa.jpg",
             "images/luxury_villa_interior.jpg",
             "images/luxury_villa_kitchen.jpg"
         ],
-        rating: 4.95,
-        reviewsCount: 38,
-        amenities: ["Infinity Pool", "Sea View", "Home Automation", "Private Garden", "24/7 Security", "Teak Wood Interiors", "Private Gym", "Fibre Internet"]
+        "rating": 4.95,
+        "reviewsCount": 38,
+        "amenities": [
+            "Infinity Pool",
+            "Sea View",
+            "Home Automation",
+            "Private Garden",
+            "24/7 Security",
+            "Teak Wood Interiors",
+            "Private Gym",
+            "Fibre Internet"
+        ]
     },
     {
-        id: 2,
-        title: "Trivandrum Skyline Penthouse",
-        description: "Breathtaking 8-bedroom penthouse with floor-to-ceiling windows offering views of the Arabian Sea and Trivandrum city skyline. Includes premium teakwood work, modern modular kitchen, private elevator access, and secure dual parking.",
-        rent: 1100000,
-        city: "Trivandrum",
-        address: "Kovalam Beach Road, Trivandrum, Kerala",
-        lat: 8.5069,
-        lng: 76.9558,
-        category: "Penthouse Suite",
-        bedrooms: 8,
-        bathrooms: 9,
-        area: 6000,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "images/sea_penthouse_exterior.jpg",
-        images: [
+        "id": 2,
+        "title": "Trivandrum Skyline Penthouse",
+        "description": "Breathtaking 8-bedroom penthouse with floor-to-ceiling windows offering views of the Arabian Sea and Trivandrum city skyline. Includes premium teakwood work, modern modular kitchen, private elevator access, and secure dual parking.",
+        "rent": 1100000,
+        "city": "Trivandrum",
+        "address": "Kovalam Beach Road, Trivandrum, Kerala",
+        "lat": 8.5069,
+        "lng": 76.9558,
+        "category": "Penthouse Suite",
+        "bedrooms": 8,
+        "bathrooms": 9,
+        "area": 6000,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "images/sea_penthouse_exterior.jpg",
+        "images": [
             "images/sea_penthouse_exterior.jpg",
             "images/sea_penthouse.jpg",
             "images/sea_penthouse_kitchen.jpg"
         ],
-        rating: 4.91,
-        reviewsCount: 16,
-        amenities: ["Private Elevator", "Sky Deck", "Teak Finishings", "Beachfront Access", "Modular Kitchen", "Gym Access", "Concierge Service", "Smart Lock"]
+        "rating": 4.91,
+        "reviewsCount": 16,
+        "amenities": [
+            "Private Elevator",
+            "Sky Deck",
+            "Teak Finishings",
+            "Beachfront Access",
+            "Modular Kitchen",
+            "Gym Access",
+            "Concierge Service",
+            "Smart Lock"
+        ]
     },
     {
-        id: 3,
-        title: "Munnar Tea Garden Cottage",
-        description: "Tranquil stone cottage overlooking green tea plantations in Munnar. Features private balconies, cozy stone fireplace setup, and scenic misty valley views. Ideal for residents seeking peace and nature away from the city.",
-        rent: 68000,
-        city: "Munnar",
-        address: "Munnar Hills View Road, Munnar, Kerala",
-        lat: 10.0889,
-        lng: 77.0595,
-        category: "Hill Retreat",
-        bedrooms: 2,
-        bathrooms: 2,
-        area: 1650,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "images/tea_cottage.jpg",
-        images: [
+        "id": 3,
+        "title": "Munnar Tea Garden Cottage",
+        "description": "Tranquil stone cottage overlooking green tea plantations in Munnar. Features private balconies, cozy stone fireplace setup, and scenic misty valley views. Ideal for residents seeking peace and nature away from the city.",
+        "rent": 68000,
+        "city": "Munnar",
+        "address": "Munnar Hills View Road, Munnar, Kerala",
+        "lat": 10.0889,
+        "lng": 77.0595,
+        "category": "Hill Retreat",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 1650,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "images/tea_cottage.jpg",
+        "images": [
             "images/tea_cottage.jpg",
             "images/tea_cottage_interior.jpg",
             "images/tea_cottage_kitchen.jpg"
         ],
-        rating: 4.88,
-        reviewsCount: 42,
-        amenities: ["Stone Fireplace", "Tea Garden View", "Private Balcony", "Heated Floors", "Misty Valley View", "High-speed Wifi", "Organic Garden Access"]
+        "rating": 4.88,
+        "reviewsCount": 42,
+        "amenities": [
+            "Stone Fireplace",
+            "Tea Garden View",
+            "Private Balcony",
+            "Heated Floors",
+            "Misty Valley View",
+            "High-speed Wifi",
+            "Organic Garden Access"
+        ]
     },
     {
-        id: 4,
-        title: "Kozhikode Downtown Studio Loft",
-        description: "Compact and highly functional loft-style studio situated in the Kozhikode city center. Close to major IT parks and top restaurants. Fully furnished with high-speed internet connectivity, modular convertible furniture, and balcony.",
-        rent: 22000,
-        city: "Kozhikode",
-        address: "Mavoor Road, Kozhikode, Kerala",
-        lat: 11.2588,
-        lng: 75.7804,
-        category: "Studio Loft",
-        bedrooms: 1,
-        bathrooms: 1,
-        area: 620,
-        furnished: true,
-        parking: false,
-        available: true,
-        image: "images/studio_loft_exterior.jpg",
-        images: [
+        "id": 4,
+        "title": "Kozhikode Downtown Studio Loft",
+        "description": "Compact and highly functional loft-style studio situated in the Kozhikode city center. Close to major IT parks and top restaurants. Fully furnished with high-speed internet connectivity, modular convertible furniture, and balcony.",
+        "rent": 22000,
+        "city": "Kozhikode",
+        "address": "Mavoor Road, Kozhikode, Kerala",
+        "lat": 11.2588,
+        "lng": 75.7804,
+        "category": "Studio Loft",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "area": 620,
+        "furnished": true,
+        "parking": false,
+        "available": true,
+        "image": "images/studio_loft_exterior.jpg",
+        "images": [
             "images/studio_loft_exterior.jpg",
             "images/studio_loft.jpg",
             "images/studio_loft_kitchen.jpg"
         ],
-        rating: 4.79,
-        reviewsCount: 29,
-        amenities: ["Convertible Furniture", "High-speed Fiber Wifi", "Balcony", "IT Park Proximity", "AC", "Laundry Room Access", "Rooftop Lounge"]
+        "rating": 4.79,
+        "reviewsCount": 29,
+        "amenities": [
+            "Convertible Furniture",
+            "High-speed Fiber Wifi",
+            "Balcony",
+            "IT Park Proximity",
+            "AC",
+            "Laundry Room Access",
+            "Rooftop Lounge"
+        ]
     },
     {
-        id: 5,
-        title: "Fort Kochi Heritage Bungalow",
-        description: "A beautifully preserved colonial heritage bungalow in Fort Kochi. Features sprawling verandas, red oxide flooring, high rafters, antique rosewood furniture, and a private courtyard garden shaded by ancient mango trees.",
-        rent: 150000,
-        city: "Kochi",
-        address: "Princess Street, Fort Kochi, Kerala",
-        lat: 9.9658,
-        lng: 76.2427,
-        category: "Heritage Home",
-        bedrooms: 3,
-        bathrooms: 3,
-        area: 3200,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // Dutch colonial villa veranda
-        images: [
-            "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // exterior veranda
-            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800", // heritage wooden living room
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // colonial dining & kitchen
+        "id": 5,
+        "title": "Fort Kochi Heritage Bungalow",
+        "description": "A beautifully preserved colonial heritage bungalow in Fort Kochi. Features sprawling verandas, red oxide flooring, high rafters, antique rosewood furniture, and a private courtyard garden shaded by ancient mango trees.",
+        "rent": 150000,
+        "city": "Kochi",
+        "address": "Princess Street, Fort Kochi, Kerala",
+        "lat": 9.9658,
+        "lng": 76.2427,
+        "category": "Heritage Home",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area": 3200,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
+            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
         ],
-        rating: 4.93,
-        reviewsCount: 24,
-        amenities: ["Colonial Architecture", "Private Courtyard", "High Rafter Ceiling", "Red Oxide Flooring", "Antique Furnishings", "Garden", "Wi-Fi"]
+        "rating": 4.93,
+        "reviewsCount": 24,
+        "amenities": [
+            "Colonial Architecture",
+            "Private Courtyard",
+            "High Rafter Ceiling",
+            "Red Oxide Flooring",
+            "Antique Furnishings",
+            "Garden",
+            "Wi-Fi"
+        ]
     },
     {
-        id: 6,
-        title: "Wayanad Rainforest Eco Retreat",
-        description: "An eco-luxury glass villa nestled in the dense tropical forests of Wayanad. Boasts panoramic canopy views, solar power generation, natural stream pool, and complete privacy for ultimate relaxation.",
-        rent: 85000,
-        city: "Wayanad",
-        address: "Lakkidi Rainforest Corridor, Wayanad, Kerala",
-        lat: 11.6103,
-        lng: 76.0828,
-        category: "Hill Retreat",
-        bedrooms: 2,
-        bathrooms: 2,
-        area: 2100,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // tropical jungle glass resort
-        images: [
-            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // forest exterior
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", // glass jungle living room
-            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800"  // timber forest kitchen
+        "id": 6,
+        "title": "Wayanad Rainforest Eco Retreat",
+        "description": "An eco-luxury glass villa nestled in the dense tropical forests of Wayanad. Boasts panoramic canopy views, solar power generation, natural stream pool, and complete privacy for ultimate relaxation.",
+        "rent": 85000,
+        "city": "Wayanad",
+        "address": "Lakkidi Rainforest Corridor, Wayanad, Kerala",
+        "lat": 11.6103,
+        "lng": 76.0828,
+        "category": "Hill Retreat",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 2100,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+            "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=800",
+            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"
         ],
-        rating: 4.89,
-        reviewsCount: 31,
-        amenities: ["Forest Canopy View", "Natural Stream Access", "Solar Power", "Floor-to-Ceiling Glass", "Decks", "Fibre Internet"]
+        "rating": 4.89,
+        "reviewsCount": 31,
+        "amenities": [
+            "Forest Canopy View",
+            "Natural Stream Access",
+            "Solar Power",
+            "Floor-to-Ceiling Glass",
+            "Decks",
+            "Fibre Internet"
+        ]
     },
     {
-        id: 7,
-        title: "Alappuzha Backwater Floating Villa",
-        description: "Experience serene living directly on the Alappuzha backwaters. Modern water-front villa equipped with a private boat dock, spacious wooden sun deck, open-air bath setup, and sunset viewing lounge.",
-        rent: 120000,
-        city: "Alappuzha",
-        address: "Punnamada Lakefront, Alappuzha, Kerala",
-        lat: 9.4981,
-        lng: 76.3388,
-        category: "Backwater Estate",
-        bedrooms: 3,
-        bathrooms: 3,
-        area: 2800,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // backwater waterfront villa
-        images: [
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // backwater deck exterior
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // waterfront living room
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // lakeside kitchen counter
+        "id": 7,
+        "title": "Alappuzha Backwater Floating Villa",
+        "description": "Experience serene living directly on the Alappuzha backwaters. Modern water-front villa equipped with a private boat dock, spacious wooden sun deck, open-air bath setup, and sunset viewing lounge.",
+        "rent": 120000,
+        "city": "Alappuzha",
+        "address": "Punnamada Lakefront, Alappuzha, Kerala",
+        "lat": 9.4981,
+        "lng": 76.3388,
+        "category": "Backwater Estate",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area": 2800,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+            "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800",
+            "https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?w=800"
         ],
-        rating: 4.96,
-        reviewsCount: 45,
-        amenities: ["Private Boat Dock", "Backwater Views", "Wooden Sun Deck", "Outdoor Jacuzzi", "Speedboat Service", "Fully Furnished"]
+        "rating": 4.96,
+        "reviewsCount": 45,
+        "amenities": [
+            "Private Boat Dock",
+            "Backwater Views",
+            "Wooden Sun Deck",
+            "Outdoor Jacuzzi",
+            "Speedboat Service",
+            "Fully Furnished"
+        ]
     },
     {
-        id: 8,
-        title: "Kumarakom Lakefront Sanctuary",
-        description: "A private luxury sanctuary on the shores of Vembanad Lake. Includes traditional sloped roof architecture, lush coconut groves, private plunge pool, and personalized housekeeping service.",
-        rent: 210000,
-        city: "Kumarakom",
-        address: "Vembanad Lake Promenade, Kumarakom, Kerala",
-        lat: 9.6175,
-        lng: 76.4301,
-        category: "Backwater Estate",
-        bedrooms: 4,
-        bathrooms: 4,
-        area: 4200,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800", // palm tropical resort pool villa
-        images: [
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800", // exterior pool & lake view
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", // rafter ceiling living room
-            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"  // resort kitchen island
+        "id": 8,
+        "title": "Kumarakom Lakefront Sanctuary",
+        "description": "A private luxury sanctuary on the shores of Vembanad Lake. Includes traditional sloped roof architecture, lush coconut groves, private plunge pool, and personalized housekeeping service.",
+        "rent": 210000,
+        "city": "Kumarakom",
+        "address": "Vembanad Lake Promenade, Kumarakom, Kerala",
+        "lat": 9.6175,
+        "lng": 76.4301,
+        "category": "Backwater Estate",
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "area": 4200,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
+            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"
         ],
-        rating: 4.97,
-        reviewsCount: 22,
-        amenities: ["Vembanad Lakefront", "Plunge Pool", "Coconut Grove", "Personal Butler Option", "High Rafter Design", "24/7 Power Backup"]
+        "rating": 4.97,
+        "reviewsCount": 22,
+        "amenities": [
+            "Vembanad Lakefront",
+            "Plunge Pool",
+            "Coconut Grove",
+            "Personal Butler Option",
+            "High Rafter Design",
+            "24/7 Power Backup"
+        ]
     },
     {
-        id: 9,
-        title: "Thrissur Traditional Illam",
-        description: "A magnificent century-old heritage estate featuring central open courtyard (Nadumuttom), teak carvings, traditional bathing pond access, and expansive verdant lawns.",
-        rent: 95000,
-        city: "Thrissur",
-        address: "Swaraj Round North, Thrissur, Kerala",
-        lat: 10.5276,
-        lng: 76.2144,
-        category: "Heritage Home",
-        bedrooms: 4,
-        bathrooms: 3,
-        area: 3800,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "images/thrissur_illam_exterior.jpg",
-        images: [
+        "id": 9,
+        "title": "Thrissur Traditional Illam",
+        "description": "A magnificent century-old heritage estate featuring central open courtyard (Nadumuttom), teak carvings, traditional bathing pond access, and expansive verdant lawns.",
+        "rent": 95000,
+        "city": "Thrissur",
+        "address": "Swaraj Round North, Thrissur, Kerala",
+        "lat": 10.5276,
+        "lng": 76.2144,
+        "category": "Heritage Home",
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "area": 3800,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "images/thrissur_illam_exterior.jpg",
+        "images": [
             "images/thrissur_illam_exterior.jpg",
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800", // courtyard interior rafter
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // traditional wood kitchen
+            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800",
+            "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800"
         ],
-        rating: 4.90,
-        reviewsCount: 18,
-        amenities: ["Traditional Nadumuttom", "Heritage Woodwork", "Bathing Pond", "Spacious Gardens", "Car Garage", "Security Gates"]
+        "rating": 4.9,
+        "reviewsCount": 18,
+        "amenities": [
+            "Traditional Nadumuttom",
+            "Heritage Woodwork",
+            "Bathing Pond",
+            "Spacious Gardens",
+            "Car Garage",
+            "Security Gates"
+        ]
     },
     {
-        id: 10,
-        title: "Kollam Cliffside Sunset Residence",
-        description: "A contemporary cliffside home overlooking Ashtamudi Lake and the sea. Designed with wide glass balconies, open dining space, and private sunset decks.",
-        rent: 75000,
-        city: "Kollam",
-        address: "Ashtamudi Cliff Road, Kollam, Kerala",
-        lat: 8.8932,
-        lng: 76.6141,
-        category: "Coastal Residence",
-        bedrooms: 3,
-        bathrooms: 3,
-        area: 2400,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", // cliffside glass house
-        images: [
-            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", // cliff exterior deck
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", // sunset glass living room
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"  // coastal view kitchen
+        "id": 10,
+        "title": "Kollam Cliffside Sunset Residence",
+        "description": "A contemporary cliffside home overlooking Ashtamudi Lake and the sea. Designed with wide glass balconies, open dining space, and private sunset decks.",
+        "rent": 75000,
+        "city": "Kollam",
+        "address": "Ashtamudi Cliff Road, Kollam, Kerala",
+        "lat": 8.8932,
+        "lng": 76.6141,
+        "category": "Coastal Residence",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area": 2400,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800",
+            "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800"
         ],
-        rating: 4.84,
-        reviewsCount: 14,
-        amenities: ["Cliffside Ocean View", "Sunset Viewing Deck", "Glass Balconies", "Lake Access", "High-speed Internet", "Parking Garage"]
+        "rating": 4.84,
+        "reviewsCount": 14,
+        "amenities": [
+            "Cliffside Ocean View",
+            "Sunset Viewing Deck",
+            "Glass Balconies",
+            "Lake Access",
+            "High-speed Internet",
+            "Parking Garage"
+        ]
     },
     {
-        id: 11,
-        title: "Vagamon Pine Valley Chalet",
-        description: "A cozy European-style pine wooden chalet in the rolling green hills of Vagamon. Features sloping roof, wooden patio, outdoor campfire area, and mountain views.",
-        rent: 48000,
-        city: "Vagamon",
-        address: "Pine Forest Ridge, Vagamon, Kerala",
-        lat: 9.6896,
-        lng: 76.9067,
-        category: "Hill Retreat",
-        bedrooms: 2,
-        bathrooms: 2,
-        area: 1400,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800", // pine wooden chalet in hill
-        images: [
-            "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800", // chalet exterior
-            "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800", // pine wood fireplace room
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // timber mountain kitchen
+        "id": 11,
+        "title": "Vagamon Pine Valley Chalet",
+        "description": "A cozy European-style pine wooden chalet in the rolling green hills of Vagamon. Features sloping roof, wooden patio, outdoor campfire area, and mountain views.",
+        "rent": 48000,
+        "city": "Vagamon",
+        "address": "Pine Forest Ridge, Vagamon, Kerala",
+        "lat": 9.6896,
+        "lng": 76.9067,
+        "category": "Hill Retreat",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 1400,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800",
+            "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"
         ],
-        rating: 4.87,
-        reviewsCount: 26,
-        amenities: ["Pine Wood Interiors", "Campfire Pit", "Mountain Views", "Private Lawn", "Heated Water", "Wifi"]
+        "rating": 4.87,
+        "reviewsCount": 26,
+        "amenities": [
+            "Pine Wood Interiors",
+            "Campfire Pit",
+            "Mountain Views",
+            "Private Lawn",
+            "Heated Water",
+            "Wifi"
+        ]
     },
     {
-        id: 12,
-        title: "Palakkad Heritage Tharavadu",
-        description: "Nestled near the Western Ghats foothill in Palakkad, this traditional manor offers wide wooden verandas, granary conversions, and open courtyards.",
-        rent: 62000,
-        city: "Palakkad",
-        address: "Ghats View Road, Palakkad, Kerala",
-        lat: 10.7867,
-        lng: 76.6548,
-        category: "Heritage Home",
-        bedrooms: 3,
-        bathrooms: 2,
-        area: 2900,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // traditional slate tharavadu
-        images: [
-            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // tharavadu exterior
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800", // open pillar veranda
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // clay pot traditional kitchen
+        "id": 12,
+        "title": "Palakkad Heritage Tharavadu",
+        "description": "Nestled near the Western Ghats foothill in Palakkad, this traditional manor offers wide wooden verandas, granary conversions, and open courtyards.",
+        "rent": 62000,
+        "city": "Palakkad",
+        "address": "Ghats View Road, Palakkad, Kerala",
+        "lat": 10.7867,
+        "lng": 76.6548,
+        "category": "Heritage Home",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "area": 2900,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800",
+            "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800",
+            "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800"
         ],
-        rating: 4.82,
-        reviewsCount: 15,
-        amenities: ["Foothill Views", "Wooden Verandas", "Courtyard", "Organic Farming Land", "Quiet Surroundings"]
+        "rating": 4.82,
+        "reviewsCount": 15,
+        "amenities": [
+            "Foothill Views",
+            "Wooden Verandas",
+            "Courtyard",
+            "Organic Farming Land",
+            "Quiet Surroundings"
+        ]
     },
     {
-        id: 13,
-        title: "Kochi Waterfront Glass Mansion",
-        description: "Ultra-modern glass mansion overlooking the Bolgatty island channel. Features floor-to-ceiling double-glazed glass walls, private yacht mooring berth, and indoor sauna.",
-        rent: 650000,
-        city: "Kochi",
-        address: "Bolgatty Island Road, Kochi, Kerala",
-        lat: 9.9860,
-        lng: 76.2690,
-        category: "Luxury Villa",
-        bedrooms: 5,
-        bathrooms: 5,
-        area: 5500,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // modern glass mansion pool
-        images: [
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // glass exterior
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", // double height living room
-            "https://images.unsplash.com/photo-1600566753086-35f133c65dae?w=800"  // marble island kitchen
+        "id": 13,
+        "title": "Kochi Waterfront Glass Mansion",
+        "description": "Ultra-modern glass mansion overlooking the Bolgatty island channel. Features floor-to-ceiling double-glazed glass walls, private yacht mooring berth, and indoor sauna.",
+        "rent": 650000,
+        "city": "Kochi",
+        "address": "Bolgatty Island Road, Kochi, Kerala",
+        "lat": 9.986,
+        "lng": 76.269,
+        "category": "Luxury Villa",
+        "bedrooms": 5,
+        "bathrooms": 5,
+        "area": 5500,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
+            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
         ],
-        rating: 4.98,
-        reviewsCount: 11,
-        amenities: ["Yacht Mooring", "Glass Architecture", "Indoor Sauna", "Infinity Pool", "Smart Lighting", "EV Charging"]
+        "rating": 4.98,
+        "reviewsCount": 11,
+        "amenities": [
+            "Yacht Mooring",
+            "Glass Architecture",
+            "Indoor Sauna",
+            "Infinity Pool",
+            "Smart Lighting",
+            "EV Charging"
+        ]
     },
     {
-        id: 14,
-        title: "Munnar Mist Cloud Residence",
-        description: "Perched at high altitude in Munnar, this villa sits above the cloud line. Features glass observation deck, wood-burning hearth, and tea plantation trails.",
-        rent: 89000,
-        city: "Munnar",
-        address: "Top Station Road, Munnar, Kerala",
-        lat: 10.1150,
-        lng: 77.0850,
-        category: "Hill Retreat",
-        bedrooms: 3,
-        bathrooms: 3,
-        area: 2300,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // misty mountain lodge
-        images: [
-            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // mountain mist exterior
-            "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800", // hearth fireplace room
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // high altitude kitchen
+        "id": 14,
+        "title": "Munnar Mist Cloud Residence",
+        "description": "Perched at high altitude in Munnar, this villa sits above the cloud line. Features glass observation deck, wood-burning hearth, and tea plantation trails.",
+        "rent": 89000,
+        "city": "Munnar",
+        "address": "Top Station Road, Munnar, Kerala",
+        "lat": 10.115,
+        "lng": 77.085,
+        "category": "Hill Retreat",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area": 2300,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+            "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800",
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"
         ],
-        rating: 4.91,
-        reviewsCount: 20,
-        amenities: ["Above Cloud Line", "Observation Deck", "Hearth Fireplace", "Private Trekking Trail", "Wifi"]
+        "rating": 4.91,
+        "reviewsCount": 20,
+        "amenities": [
+            "Above Cloud Line",
+            "Observation Deck",
+            "Hearth Fireplace",
+            "Private Trekking Trail",
+            "Wifi"
+        ]
     },
     {
-        id: 15,
-        title: "Trivandrum Royal Horizon Suite",
-        description: "Opulent 4-bedroom executive suite located in central Trivandrum near Kowdiar Palace. Features Italian marble floors, private terrace, and 24h concierge.",
-        rent: 280000,
-        city: "Trivandrum",
-        address: "Kowdiar Palace Avenue, Trivandrum, Kerala",
-        lat: 8.5280,
-        lng: 76.9600,
-        category: "Penthouse Suite",
-        bedrooms: 4,
-        bathrooms: 4,
-        area: 3600,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // luxury penthouse tower
-        images: [
-            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // tower exterior
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800", // marble luxury living room
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"  // gourmet kitchen
+        "id": 15,
+        "title": "Trivandrum Royal Horizon Suite",
+        "description": "Opulent 4-bedroom executive suite located in central Trivandrum near Kowdiar Palace. Features Italian marble floors, private terrace, and 24h concierge.",
+        "rent": 280000,
+        "city": "Trivandrum",
+        "address": "Kowdiar Palace Avenue, Trivandrum, Kerala",
+        "lat": 8.528,
+        "lng": 76.96,
+        "category": "Penthouse Suite",
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "area": 3600,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
+            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
+            "https://images.unsplash.com/photo-1600573472591-ee6c563aaec9?w=800"
         ],
-        rating: 4.93,
-        reviewsCount: 17,
-        amenities: ["Italian Marble Floors", "Palace View", "Private Terrace", "24/7 Security", "Valet Parking"]
+        "rating": 4.93,
+        "reviewsCount": 17,
+        "amenities": [
+            "Italian Marble Floors",
+            "Palace View",
+            "Private Terrace",
+            "24/7 Security",
+            "Valet Parking"
+        ]
     },
     {
-        id: 16,
-        title: "Wayanad Coffee Estate Manor",
-        description: "A private coffee plantation manor offering expansive green views, infinity plunge pool, fresh roast tasting room, and peaceful walking tracks.",
-        rent: 78000,
-        city: "Wayanad",
-        address: "Meppadi Coffee Road, Wayanad, Kerala",
-        lat: 11.5500,
-        lng: 76.1200,
-        category: "Hill Retreat",
-        bedrooms: 3,
-        bathrooms: 3,
-        area: 2700,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // coffee plantation estate manor
-        images: [
-            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // estate manor exterior
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", // plantation lounge
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // coffee bar & timber kitchen
+        "id": 16,
+        "title": "Wayanad Coffee Estate Manor",
+        "description": "A private coffee plantation manor offering expansive green views, infinity plunge pool, fresh roast tasting room, and peaceful walking tracks.",
+        "rent": 78000,
+        "city": "Wayanad",
+        "address": "Meppadi Coffee Road, Wayanad, Kerala",
+        "lat": 11.55,
+        "lng": 76.12,
+        "category": "Hill Retreat",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area": 2700,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
+            "https://images.unsplash.com/photo-1600585152220-90363fe7e127?w=800",
+            "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800"
         ],
-        rating: 4.88,
-        reviewsCount: 23,
-        amenities: ["Coffee Estate View", "Plunge Pool", "Tasting Room", "Plantation Trails", "Fibre Internet"]
+        "rating": 4.88,
+        "reviewsCount": 23,
+        "amenities": [
+            "Coffee Estate View",
+            "Plunge Pool",
+            "Tasting Room",
+            "Plantation Trails",
+            "Fibre Internet"
+        ]
     },
     {
-        id: 17,
-        title: "Alappuzha Lagoon Sunset Villa",
-        description: "Charming waterside cottage right on the quiet canal bays of Alappuzha. Comes with private canoe, lakeside gazebo, and fresh coconut grove.",
-        rent: 55000,
-        city: "Alappuzha",
-        address: "Kainakary Canal Banks, Alappuzha, Kerala",
-        lat: 9.5100,
-        lng: 76.3600,
-        category: "Backwater Estate",
-        bedrooms: 2,
-        bathrooms: 2,
-        area: 1800,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // lagoon waterside cottage
-        images: [
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", // lagoon exterior deck
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", // rattan lagoon lounge
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // backwater kitchen
+        "id": 17,
+        "title": "Alappuzha Lagoon Sunset Villa",
+        "description": "Charming waterside cottage right on the quiet canal bays of Alappuzha. Comes with private canoe, lakeside gazebo, and fresh coconut grove.",
+        "rent": 55000,
+        "city": "Alappuzha",
+        "address": "Kainakary Canal Banks, Alappuzha, Kerala",
+        "lat": 9.51,
+        "lng": 76.36,
+        "category": "Backwater Estate",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 1800,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
+            "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800"
         ],
-        rating: 4.85,
-        reviewsCount: 28,
-        amenities: ["Private Canoe", "Lakeside Gazebo", "Quiet Canal View", "Solar Backup", "Wifi"]
+        "rating": 4.85,
+        "reviewsCount": 28,
+        "amenities": [
+            "Private Canoe",
+            "Lakeside Gazebo",
+            "Quiet Canal View",
+            "Solar Backup",
+            "Wifi"
+        ]
     },
     {
-        id: 18,
-        title: "Kozhikode Beachfront Contemporary",
-        description: "Modern beach home on Kozhikode coast with direct sand access, infinity plunge pool, and floor-to-ceiling ocean window walls.",
-        rent: 98000,
-        city: "Kozhikode",
-        address: "Kappad Beach Promenade, Kozhikode, Kerala",
-        lat: 11.3800,
-        lng: 75.7200,
-        category: "Coastal Residence",
-        bedrooms: 2,
-        bathrooms: 2,
-        area: 1750,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // beachfront white villa
-        images: [
-            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800", // beach villa exterior
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800", // ocean view living room
-            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800"  // coastal white kitchen
+        "id": 18,
+        "title": "Kozhikode Beachfront Contemporary",
+        "description": "Modern beach home on Kozhikode coast with direct sand access, infinity plunge pool, and floor-to-ceiling ocean window walls.",
+        "rent": 98000,
+        "city": "Kozhikode",
+        "address": "Kappad Beach Promenade, Kozhikode, Kerala",
+        "lat": 11.38,
+        "lng": 75.72,
+        "category": "Coastal Residence",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 1750,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
         ],
-        rating: 4.88,
-        reviewsCount: 16,
-        amenities: ["Sunset Plunge Pool", "Panoramic Ocean View", "Glass Walls", "Spacious Sundeck", "AC", "High Speed Wifi"]
+        "rating": 4.88,
+        "reviewsCount": 16,
+        "amenities": [
+            "Sunset Plunge Pool",
+            "Panoramic Ocean View",
+            "Glass Walls",
+            "Spacious Sundeck",
+            "AC",
+            "High Speed Wifi"
+        ]
     },
     {
-        id: 19,
-        title: "Technopark Executive Suite",
-        description: "An elegant corporate executive apartment located next to Technopark Phase 3 in Trivandrum. Specially designed for digital nomads and tech leaders, it features smart desks, ergonomic setup, and multi-cuisine restaurant access.",
-        rent: 35000,
-        city: "Trivandrum",
-        address: "Technopark Phase 3 Boulevard, Trivandrum, Kerala",
-        lat: 8.5500,
-        lng: 76.8800,
-        category: "Studio Loft",
-        bedrooms: 1,
-        bathrooms: 1,
-        area: 750,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800", // tech park glass block
-        images: [
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800", // suite building exterior
-            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800", // executive smart desk room
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800"  // tech studio kitchen
+        "id": 19,
+        "title": "Technopark Executive Suite",
+        "description": "An elegant corporate executive apartment located next to Technopark Phase 3 in Trivandrum. Specially designed for digital nomads and tech leaders, it features smart desks, ergonomic setup, and multi-cuisine restaurant access.",
+        "rent": 35000,
+        "city": "Trivandrum",
+        "address": "Technopark Phase 3 Boulevard, Trivandrum, Kerala",
+        "lat": 8.55,
+        "lng": 76.88,
+        "category": "Studio Loft",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "area": 750,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800",
+            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
         ],
-        rating: 4.79,
-        reviewsCount: 22,
-        amenities: ["IT Corridor Proximity", "Ergonomic Office Chair", "Smart TV", "Fibre Line Wifi", "Executive Lounge", "Gym Access"]
+        "rating": 4.79,
+        "reviewsCount": 22,
+        "amenities": [
+            "IT Corridor Proximity",
+            "Ergonomic Office Chair",
+            "Smart TV",
+            "Fibre Line Wifi",
+            "Executive Lounge",
+            "Gym Access"
+        ]
     },
     {
-        id: 20,
-        title: "Palakkad Heritage House",
-        description: "An authentic, incredibly detailed Palakkad heritage mansion (Tharavad). Showcases an open central courtyard (Nadumuttom) to let in fresh monsoon rain and air, massive teakwood pillars, mud-tiled gabled roofs, and exquisite brass kitchen settings.",
-        rent: 140000,
-        city: "Palakkad",
-        address: "Heritage Village Road, Kalpathy, Palakkad, Kerala",
-        lat: 10.7800,
-        lng: 76.6450,
-        category: "Heritage Home",
-        bedrooms: 3,
-        bathrooms: 3,
-        area: 3400,
-        furnished: true,
-        parking: true,
-        available: true,
-        image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // kalpathy heritage tharavadu
-        images: [
-            "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800", // tharavadu clay roof exterior
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800", // nadumuttom courtyard interior
-            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"  // traditional brass & clay pot kitchen
+        "id": 20,
+        "title": "Palakkad Heritage House",
+        "description": "An authentic, incredibly detailed Palakkad heritage mansion (Tharavad). Showcases an open central courtyard (Nadumuttom) to let in fresh monsoon rain and air, massive teakwood pillars, mud-tiled gabled roofs, and exquisite brass kitchen settings.",
+        "rent": 140000,
+        "city": "Palakkad",
+        "address": "Heritage Village Road, Kalpathy, Palakkad, Kerala",
+        "lat": 10.78,
+        "lng": 76.645,
+        "category": "Heritage Home",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area": 3400,
+        "furnished": true,
+        "parking": true,
+        "available": true,
+        "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+        "images": [
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800",
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
         ],
-        rating: 4.98,
-        reviewsCount: 19,
-        amenities: ["Central Courtyard (Nadumuttom)", "Kalpathy Village Proximity", "Clay Tile Roofs", "Teakwood Pillars", "Exquisite Brass Kitchenware", "Pond Access"]
+        "rating": 4.98,
+        "reviewsCount": 19,
+        "amenities": [
+            "Central Courtyard (Nadumuttom)",
+            "Kalpathy Village Proximity",
+            "Clay Tile Roofs",
+            "Teakwood Pillars",
+            "Exquisite Brass Kitchenware",
+            "Pond Access"
+        ]
     }
 ];
 
